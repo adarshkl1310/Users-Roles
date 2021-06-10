@@ -1,0 +1,20 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <title>PhotoSharingApp</title>
+    <%= csrf_meta_tags %>
+
+    <%= stylesheet_link_tag    'application', media: 'all', 'data-turbolinks-track': 'reload' %>
+    <%= javascript_include_tag 'application', 'data-turbolinks-track': 'reload' %>
+  </head>
+
+  <body style="background-color: rgb(246, 255, 229)">
+  <%= render '/layouts/nav' %>
+
+    <%= yield %>
+     <p class="notice"><%= notice %></p>
+     <p class="alert"><%= alert %></p>
+
+
+  </body>
+</html>

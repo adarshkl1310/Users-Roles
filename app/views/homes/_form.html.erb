@@ -1,0 +1,22 @@
+ 
+
+
+
+<ol>
+<h3 class="text-primary">Add photo</h3>
+
+ <%= simple_form_for @home, url: homes_path, html: { multipart: true } do |f|%>
+
+<b><%= f.text_field :photo_name,:maxlength=>"100",:size=>"40px",placeholder: 'Photo Name',class: "form-control"%></br></b>
+
+
+ <%= f.label :image,'Photo',class: "text-info"%></b>  
+ <%= f.file_field :image%></br>
+ 
+
+
+<b><%= f.submit"Post",class: "btn btn-primary"%></b>
+</ol>
+<%end%>
+
+\

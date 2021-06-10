@@ -1,0 +1,46 @@
+</br>
+</br>
+</br>
+<% if user_signed_in? %>
+<div class="row">
+ <div class="col-md-3 col-md-offset-4">
+  <ol><div class="panel panel-default">
+<h4 class="text-center"><%= @user.username.first(20).capitalize%>/<%= @user.city.first(20)%></h4>
+<h5 class="text-center"><%=@user.gender.first(10).capitalize%></h5></ol>
+<ol><h4 class="text-center"><%=@user.home.count%> photos</h4></ol>
+</div></ol>
+</div>
+</div>
+
+
+
+<div class="row">
+
+<%@user.home.each do |home|%>
+ <div class="col-md-3">
+  <div class="panel panel-default">
+
+    <ol><%= image_tag home.image.url(:medium),:size => "220x220", :crop => :fill%></ol>
+    <h5 class= "text-primary text-center"><%= home.photo_name %></h5>
+
+    <h6 class= "text-center"><%= time_ago_in_words(home.created_at) %> ago</h6>     
+
+ 
+  <h6 class="text-center"> <%= link_to "Back", homes_path, class: "btn btn-default" %>
+<% if current_user == home.user %>
+
+ <%= link_to "Delete", home_path(home), method: :delete, data: { confirm: "Are you sure?" }, class: "btn btn-default"%></h6>
+    </div>
+</div>
+    <%end%>
+    <%end%>
+    <%else%>
+     <div class="col-md-4 col-md-offset-4">
+  </br>
+    <p>Please Sign In to see user profile </b><%=link_to"sign in",new_user_session_path,class: "btn btn-info btn-md" %>
+</div>
+
+
+    <%end%>
+
+    </div>

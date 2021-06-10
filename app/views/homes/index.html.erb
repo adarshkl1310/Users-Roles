@@ -1,0 +1,28 @@
+</br>
+</br>
+</br>
+<% if user_signed_in? %>
+<div class="row">
+ <div class="col-md-2 col-md-offset-5">
+<ol><%=link_to "add photo",new_home_path,class: "btn btn-primary btn-lg" %></ol>
+</div>
+</div>
+<%end%>
+
+<div class="row">
+
+ <%@homes.each do |home|%>
+ <div class="col-md-3">
+<div class="panel panel-default">
+<ol><%=link_to image_tag(home.image.url(:medium),:size => "230x230", :crop => :fill),home_path(home.user.id)%></ol>
+
+
+<b><h5 class="text-center"><%=home.photo_name%></h5></b>
+
+<h5 class="text-center"><%= Time.now.strftime("%m/%d/%Y") %></h5>
+
+</div>
+</div>
+<%end%>
+
+</div>
